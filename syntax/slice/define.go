@@ -26,5 +26,9 @@ func main() {
 
 	// Method 3: ingnore key of `var`
 	s2 := make([]int, 3)
-	fmt.Printf("s2 type: %T, s2 value: %v, len: %d, cap: %d\n", s1, s2, len(s2), cap(s2))
+	fmt.Printf("s2 type: %T, s2 value: %v, len: %d, cap: %d\n", s2, s2, len(s2), cap(s2))
+
+	// Method 4: allocate space and specify length size is 3 and capacity size 5
+	s3 := make([]int, 3, 5)
+	fmt.Printf("s3 type: %T, s3 value: %v, len: %d, cap: %d\n", s3, s3, len(s3), cap(s3))
 }
