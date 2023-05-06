@@ -33,7 +33,7 @@ func main() {
 
 	var w Writer
 	// Why type assert suceess?
-	// Because Interface `Reader` and `Writer` point to same concreate type (Book)
+	// Because Interface `Reader` and `Writer` point to same concreate type (Book )
 	w = r.(Writer)
 	w.WriteBook()
 }
