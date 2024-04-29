@@ -92,7 +92,7 @@ type User struct {
 func _raw(c *gin.Context) {
 	body, _ := c.GetRawData()
 	data := string(body)
-	fmt.Println("[GetRawData]", string(data))
+	fmt.Println("[GetRawData]", data)
 	// 解析
 	var user User
 	if err := json.Unmarshal(body, &user); err != nil {
