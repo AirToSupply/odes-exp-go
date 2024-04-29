@@ -82,6 +82,13 @@ type User struct {
 }
 
 // 原始参数（Body参数）
+// curl --location --request POST 'http://127.0.0.1:8080/raw' \
+// --header 'User-Agent: Apifox/1.0.0 (https://apifox.com)' \
+// --header 'Content-Type: application/json' \
+// --header 'Accept: */*' \
+// --header 'Host: 127.0.0.1:8080' \
+// --header 'Connection: keep-alive' \
+// --data-raw '{"name": "Jack", "age": 17}'
 func _raw(c *gin.Context) {
 	body, _ := c.GetRawData()
 	data := string(body)
