@@ -26,6 +26,7 @@ func main() {
 	router.GET("/yaml", _yaml)
 	router.GET("/html", _html)
 	router.GET("/redirect", _redirect)
+	router.GET("/header", _header)
 	router.Run(":8080")
 }
 
@@ -67,4 +68,9 @@ func _redirect(c *gin.Context) {
 	// c.Redirect(http.StatusMovedPermanently, "http://www.baidu.com")
 	// 重定向站内路由
 	c.Redirect(http.StatusFound, "/html")
+}
+
+// 设置响应头
+func _header(c *gin.Context) {
+	c.Header("Token", "87d7yd74r")
 }

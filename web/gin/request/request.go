@@ -12,6 +12,7 @@ func main() {
 	router.GET("/param/user/:user_id/book/:book_id", _param)
 	router.POST("/form", _form)
 	router.POST("/raw", _raw)
+	router.GET("/header", _header)
 	router.Run(":8080")
 }
 
@@ -99,4 +100,20 @@ func _raw(c *gin.Context) {
 		fmt.Println(err.Error())
 	}
 	fmt.Println("[Parse JSON]", user)
+}
+
+// 获取响应头
+func _header(context *gin.Context) {
+	// 用法一：GetHeader方法获取请求头（如果没有请求头，则返回空字符串）
+	// 注意：GetHeader方法不区分大小写
+	fmt.Println("[GetHeader]", context.GetHeader("User-Agent"))
+	fmt.Println("[GetHeader]", context.GetHeader("Token"))
+	// 用法二：通过Request对象的Header对象获取请求头（如果没有请求头，则返回空字符串）
+	// 注意：Header对象的Get方法不区分大小写
+	fmt.Println("[Request Header]", context.Request.Header.Get("user-Agent"))
+	// 用法三：通过Request对象的Header对象获取请求头（如果没有请求头，则返回空字符串）
+	// 注意：type Header map[string][]string 这里的Header对象其实是个Map，通过键值对的方式获取对应的请求头需要区分大小写
+	fmt.Println("[Request Header Map]", context.Request.Header["user-Agent"])
+	// 用法四：获取请求头的所有键值对
+	fmt.Println("[Request Header Object]", context.Request.Header)
 }
